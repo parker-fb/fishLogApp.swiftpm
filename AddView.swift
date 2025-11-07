@@ -21,6 +21,15 @@ struct AddView: View {
                 .frame(width: 375, height: 200)
                 .foregroundStyle(.tertiary)
 
+            
+            
+            
+            
+            
+            
+            
+            
+            
             VStack {
 
                 HStack {
@@ -145,7 +154,7 @@ struct AddView: View {
                 HStack {
                     Text(date.formatted(.dateTime.month(.abbreviated).day()))
                         .foregroundColor(.black)
-                        .frame(width: 50, height: 10)
+                        .frame(width: 55, height: 10)
                     Image(systemName: "chevron.down")
                         .foregroundStyle(.black)
                 }
@@ -179,6 +188,7 @@ struct AddView: View {
         
     }
 }
+
 
 #Preview {
     AddView()
