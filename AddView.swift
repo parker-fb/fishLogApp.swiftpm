@@ -14,6 +14,7 @@ struct AddView: View {
     @State var name = "Bait"
     @State var date = Date()
     @State private var showCal = false
+    @State var showView = false
 
     var body: some View {
         ZStack {
@@ -23,8 +24,28 @@ struct AddView: View {
 
             
             
+            VStack{
+                
+                HStack{
+                    Button {
+                        showView = true
+                    } label: {
+                        Text("Fish")
+                            .foregroundStyle(.black)
+                    }
+                    
+                    Spacer()
+                }
+                Spacer()
+            }
+            .padding(.horizontal)
+            .padding(.vertical)
+            .frame(width: 375, height: 200)
             
             
+            .popover(isPresented: $showView) {
+                FishCollectionView(showView: $showView)
+            }
             
             
             
