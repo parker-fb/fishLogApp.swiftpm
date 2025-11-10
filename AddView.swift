@@ -15,6 +15,13 @@ struct AddView: View {
     @State var date = Date()
     @State private var showCal = false
     @State var showView = false
+    @State var Slength = ""
+    @State var len = 0.0
+    @State var Sweight = ""
+    @State var weight = 0.0
+    @State var tyoe = "lbs"
+//    @State var oz = ""
+//    @State var lbs = ""
 
     var body: some View {
         ZStack {
@@ -47,7 +54,46 @@ struct AddView: View {
                 FishCollectionView(showView: $showView)
             }
             
+            HStack{
+                Text("Length: ")
+                    TextField("0.0 ", text: $Slength)
+                        .keyboardType(.numberPad)
+                        .padding(-5)
+                Spacer()
+                    
+            }
+            .padding(.horizontal)
             
+            HStack{
+                Text("in")
+                    .opacity(0.6)
+                Spacer()
+            }
+            .frame(width: 157)
+            
+            VStack{
+                Spacer()
+                HStack{
+                    Text("Weight: ")
+                    TextField("0.0", text: $Sweight)
+                        .keyboardType(.numberPad)
+                        .padding(-5)
+                    Spacer()
+                }
+                .padding(.horizontal)
+            }
+            .padding(.vertical)
+            .frame(width: 375, height: 200)
+           
+            
+//            VStack {
+//                Menu("\(type)") {
+//                    Button("lbs") { }
+//                    Button("oz") { }
+//                }
+//                Spacer()
+//            }
+//            .frame(width: 150, height: 168)
             
             
             
@@ -204,6 +250,19 @@ struct AddView: View {
 
         }
 
+        
+        
+        Button {
+            
+            if let l = Double(Slength){
+                len = l
+            }
+            
+        } label: {
+            Text("Add")
+        }
+
+        
         
 
         
