@@ -6,8 +6,11 @@
 //
 
 import SwiftUI
+import CoreLocation
 
 struct AddView: View {
+    
+    @StateObject var locVM = LocationViewModel()
 
     @State var weather = 0
     @State var w = "Weather"
@@ -264,6 +267,19 @@ struct AddView: View {
             }
 
             Spacer()
+            
+            
+            VStack{
+                Spacer()
+                HStack{
+                    Spacer()
+                    Text("Location: \(locVM.locString)")
+                }
+            }
+            .padding()
+            .frame(width: 375, height: 200)
+            
+            
         }
         .padding()
         
@@ -282,7 +298,10 @@ struct AddView: View {
             }
 
         }
-
+        
+        
+        
+        
         
         
         Button {
