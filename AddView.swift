@@ -19,7 +19,7 @@ struct AddView: View {
     @State var len = 0.0
     @State var Sweight = ""
     @State var weight = 0.0
-    @State var tyoe = "lbs"
+    @State var type = "lbs"
 //    @State var oz = ""
 //    @State var lbs = ""
 
@@ -63,6 +63,7 @@ struct AddView: View {
                     
             }
             .padding(.horizontal)
+            .frame(width: 375, height: 200)
             
             HStack{
                 Text("in")
@@ -75,7 +76,7 @@ struct AddView: View {
                 Spacer()
                 HStack{
                     Text("Weight: ")
-                    TextField("0.0", text: $Sweight)
+                    TextField("0.00", text: $Sweight)
                         .keyboardType(.numberPad)
                         .padding(-5)
                     Spacer()
@@ -86,14 +87,45 @@ struct AddView: View {
             .frame(width: 375, height: 200)
            
             
-//            VStack {
-//                Menu("\(type)") {
-//                    Button("lbs") { }
-//                    Button("oz") { }
-//                }
-//                Spacer()
-//            }
-//            .frame(width: 150, height: 168)
+            VStack{
+                
+                Spacer()
+                
+                HStack{
+                    
+                    Menu{
+                        
+                        Button("lbs"){
+                            type = "lbs"
+                        }
+                        Button("oz"){
+                            type = "oz"
+                        }
+                        
+                    } label: {
+                        
+                        HStack{
+                            Text("\(type)")
+                                .foregroundStyle(.black)
+                                .opacity(0.6)
+                            Image(systemName: "chevron.down")
+                                .font(Font.system(size: 11))
+                                .opacity(0.6)
+                                .padding(-5)
+                                .foregroundStyle(.black)
+                        }
+                    }
+                    
+                    Spacer()
+                    
+                }
+            }
+            .frame(width: 132, height: 168)
+            
+            
+            
+            
+            
             
             
             
@@ -209,6 +241,7 @@ struct AddView: View {
                 }
                 .padding(.horizontal)
             }
+            .frame(width: 375, height: 200)
 
             //            DatePicker(
             //                "Date", selection: $date, displayedComponents: [.date]
