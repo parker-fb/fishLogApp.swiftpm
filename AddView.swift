@@ -25,7 +25,10 @@ struct AddView: View {
     @State var type = "lbs"
 //    @State var oz = ""
 //    @State var lbs = ""
+    
+    @FocusState var dismissKeyboard: Bool
 
+    
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 5)
@@ -62,11 +65,15 @@ struct AddView: View {
                     TextField("0.0 ", text: $Slength)
                         .keyboardType(.numberPad)
                         .padding(-5)
+                        .focused($dismissKeyboard)
                 Spacer()
                     
             }
             .padding(.horizontal)
             .frame(width: 375, height: 200)
+//            .onTapGesture {
+//                dismissKeyboard.toggle()
+//            }
             
             HStack{
                 Text("in")
@@ -82,12 +89,16 @@ struct AddView: View {
                     TextField("0.00", text: $Sweight)
                         .keyboardType(.numberPad)
                         .padding(-5)
+                        .focused($dismissKeyboard)
                     Spacer()
                 }
                 .padding(.horizontal)
             }
             .padding(.vertical)
             .frame(width: 375, height: 200)
+//            .onTapGesture {
+//                dismissKeyboard.toggle()
+//            }
            
             
             VStack{
@@ -279,9 +290,26 @@ struct AddView: View {
             .padding()
             .frame(width: 375, height: 200)
             
+            VStack{
+                Spacer()
+                Button {
+                    
+                    if let l = Double(Slength){
+                        len = l
+                    }
+                    
+                } label: {
+                    Text("Add")
+                }
+            }
+            .frame(width: 275, height: 280)
+
             
         }
         .padding()
+        .onTapGesture {
+            dismissKeyboard = false
+        }
         
         .sheet(isPresented: $showCal) {
             VStack {
@@ -303,17 +331,6 @@ struct AddView: View {
         
         
         
-        
-        Button {
-            
-            if let l = Double(Slength){
-                len = l
-            }
-            
-        } label: {
-            Text("Add")
-        }
-
         
         
 
