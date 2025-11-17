@@ -21,6 +21,7 @@ struct FishCollectionView: View {
     ]
     
     @Binding var showView: Bool
+    @Binding var fishName: String
     
     @State var libFish: [ComputerFish] = []
     
@@ -34,6 +35,7 @@ struct FishCollectionView: View {
                 Text("Select \(selectedName)?")
                 
                 Button {
+                    fishName = ": \(fish!.name)"
                     libFish.append(ComputerFish(name: fish!.name, img: fish!.img))
                     for i in 0..<libFish.count{
                         print(libFish[i].name)
@@ -81,5 +83,5 @@ struct FishCollectionView: View {
 }
 
 #Preview {
-    FishCollectionView(showView: .constant(false))
+    FishCollectionView(showView: .constant(false), fishName: .constant(""))
 }

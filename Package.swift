@@ -17,6 +17,7 @@ let package = Package(
             name: "fishLogApp",
             targets: ["AppModule"],
             bundleIdentifier: "clc.fishLogApp",
+            teamIdentifier: "DRB83F6Y9G",
             displayVersion: "1.0",
             bundleVersion: "1",
             appIcon: .placeholder(icon: .paper),
@@ -30,6 +31,10 @@ let package = Package(
                 .landscapeRight,
                 .landscapeLeft,
                 .portraitUpsideDown(.when(deviceFamilies: [.pad]))
+            ],
+            capabilities: [
+                .locationAlwaysAndWhenInUse(purposeString: "Needs location to tag where fish was caught"),
+                .locationWhenInUse(purposeString: "Needs location to tag where fish was caught")
             ]
         )
     ],

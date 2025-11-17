@@ -25,6 +25,7 @@ struct AddView: View {
     @State var type = "lbs"
 //    @State var oz = ""
 //    @State var lbs = ""
+    @State var fishName = ""
     
     @FocusState var dismissKeyboard: Bool
 
@@ -43,7 +44,7 @@ struct AddView: View {
                     Button {
                         showView = true
                     } label: {
-                        Text("Fish")
+                        Text("Fish\(fishName)")
                             .foregroundStyle(.black)
                     }
                     
@@ -57,13 +58,13 @@ struct AddView: View {
             
             
             .popover(isPresented: $showView) {
-                FishCollectionView(showView: $showView)
+                FishCollectionView(showView: $showView, fishName: $fishName)
             }
             
             HStack{
                 Text("Length: ")
                     TextField("0.0 ", text: $Slength)
-                        .keyboardType(.numberPad)
+                        .keyboardType(.decimalPad)
                         .padding(-5)
                         .focused($dismissKeyboard)
                 Spacer()
@@ -87,7 +88,7 @@ struct AddView: View {
                 HStack{
                     Text("Weight: ")
                     TextField("0.00", text: $Sweight)
-                        .keyboardType(.numberPad)
+                        .keyboardType(.decimalPad)
                         .padding(-5)
                         .focused($dismissKeyboard)
                     Spacer()
