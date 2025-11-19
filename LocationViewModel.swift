@@ -29,6 +29,11 @@ class LocationViewModel: NSObject, ObservableObject, CLLocationManagerDelegate{
     }
     
     
+    func requestLocation(){
+        manager.requestWhenInUseAuthorization()
+        manager.requestLocation()
+    }
+    
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.first{

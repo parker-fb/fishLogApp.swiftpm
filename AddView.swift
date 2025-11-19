@@ -35,79 +35,212 @@ struct AddView: View {
             RoundedRectangle(cornerRadius: 5)
                 .frame(width: 375, height: 200)
                 .foregroundStyle(.tertiary)
-
             
             
-            VStack{
-                
-                HStack{
-                    Button {
-                        showView = true
-                    } label: {
-                        Text("Fish\(fishName)")
-                            .foregroundStyle(.black)
+            
+            HStack{
+                VStack{
+                    
+                    HStack{
+                        Button {
+                            showView = true
+                        } label: {
+                            Text("Fish\(fishName)")
+                                .foregroundStyle(.black)
+                        }
+                        
+                        Spacer()
                     }
+                    Spacer()
+                }
+                .padding(.horizontal)
+                .padding(.vertical)
+                //.frame(width: 375, height: 200)
+                
+                
+                
+                VStack{
+                    HStack {
+                        Spacer()
+                        Menu {
+                            
+                            Menu("Live Bait") {
+                                
+                                Button("Worms") {
+                                    name = "Bait: Worms"
+                                }
+                                Button("Minnows") {
+                                    name = "Bait: Minnows"
+                                }
+                                Button("Leeches") {
+                                    name = "Bait: Leeches"
+                                }
+                                Button("Shrimp") {
+                                    name = "Bait: Shrimp"
+                                }
+                                Button("Crawfish") {
+                                    name = "Bait: Crawfish"
+                                }
+                                
+                            }
+                            
+                            Menu("Natural") {
+                                
+                                Button("Chicken") {
+                                    name = "Bait: Chicken"
+                                }
+                                Button("Corn") {
+                                    name = "Bait: Corn"
+                                }
+                                Button("Cut Fish") {
+                                    name = "Bait: Cut Fish"
+                                }
+                                Button("Food") {
+                                    name = "Bait: Food"
+                                }
+                                
+                            }
+                            
+                            Menu("Artificial") {
+                                
+                                Button("Plastic Worms") {
+                                    name = "Bait: Plastic Worms"
+                                }
+                                Button("Jigs") {
+                                    name = "Bait: Jigs"
+                                }
+                                Button("Spinner") {
+                                    name = "Bait: Spinner"
+                                }
+                                Button("Crankbait") {
+                                    name = "Bait: Crankbait"
+                                }
+                                Button("Spoon") {
+                                    name = "Bait: Spoon"
+                                }
+                                Button("Topwater") {
+                                    name = "Bait: Topwater"
+                                }
+                                Button("Swimbait") {
+                                    name = "Bait: Swimbait"
+                                }
+                                Button("Flies") {
+                                    name = "Bait: Flies"
+                                }
+                                
+                            }
+                            
+                            Button("Other") {
+                                
+                            }
+                        } label: {
+                            Text(name)
+                                .foregroundStyle(.black)
+                        }
+                        .menuOrder(.fixed)
+                    }
+                    .padding(.horizontal)
+                    .padding(.vertical)
                     
                     Spacer()
                 }
-                Spacer()
+                
             }
-            .padding(.horizontal)
-            .padding(.vertical)
             .frame(width: 375, height: 200)
-            
             
             .popover(isPresented: $showView) {
                 FishCollectionView(showView: $showView, fishName: $fishName)
             }
             
             HStack{
-                Text("Length: ")
+                
+                HStack{
+                    Text("Length: ")
                     TextField("0.0 ", text: $Slength)
                         .keyboardType(.decimalPad)
-                        .padding(-5)
+                       // .padding(-5)
                         .focused($dismissKeyboard)
-                Spacer()
+                    Text("in")
+                        .opacity(0.6)
+                    Spacer()
                     
+                }
+                .padding(.horizontal)
+                //            .onTapGesture {
+                //                dismissKeyboard.toggle()
+                //            }
+                
+                HStack{
+                    
+                    //Spacer()
+                }
+                //.frame(width: 157)
+                
+                
+                //            .onTapGesture {
+                //                dismissKeyboard.toggle()
+                //            }
+                
+                
+                Button{
+                    showCal = true
+                } label: {
+                    HStack {
+                        Text(date.formatted(.dateTime.month(.abbreviated).day()))
+                            .foregroundColor(.black)
+                            .frame(width: 55, height: 10)
+                        Image(systemName: "chevron.down")
+                            .foregroundStyle(.black)
+                    }
+                    .padding()
+                    .background(.gray.opacity(0.2))
+                    .cornerRadius(8)
+                }
+                
+                
+                
+                HStack {
+                    //Spacer()
+                    Menu {
+                        Button("Sunny") {
+                            weather = 1
+                            w = "Sunny"
+                        }
+                        Button("Rain") {
+                            weather = 2
+                            w = "Rain"
+                        }
+                        Button("Cloudy") {
+                            weather = 3
+                            w = "Cloudy"
+                        }
+                    } label: {
+                        HStack {
+                            Text(w)
+                                .foregroundStyle(.black)
+                            Image(systemName: "chevron.down")
+                                .foregroundStyle(.black)
+                        }
+                    }
+                    .padding(.horizontal)
+                }
+                
+                
             }
-            .padding(.horizontal)
             .frame(width: 375, height: 200)
-//            .onTapGesture {
-//                dismissKeyboard.toggle()
-//            }
+            
             
             HStack{
-                Text("in")
-                    .opacity(0.6)
-                Spacer()
-            }
-            .frame(width: 157)
-            
+                
             VStack{
                 Spacer()
                 HStack{
                     Text("Weight: ")
                     TextField("0.00", text: $Sweight)
                         .keyboardType(.decimalPad)
-                        .padding(-5)
+                        //.padding(-5)
                         .focused($dismissKeyboard)
-                    Spacer()
-                }
-                .padding(.horizontal)
-            }
-            .padding(.vertical)
-            .frame(width: 375, height: 200)
-//            .onTapGesture {
-//                dismissKeyboard.toggle()
-//            }
-           
-            
-            VStack{
-                
-                Spacer()
-                
-                HStack{
-                    
+                    //Spacer()
                     Menu{
                         
                         Button("lbs"){
@@ -130,166 +263,49 @@ struct AddView: View {
                                 .foregroundStyle(.black)
                         }
                     }
-                    
-                    Spacer()
-                    
-                }
-            }
-            .frame(width: 132, height: 168)
-            
-            
-            
-            
-            
-            
-            
-            
-            VStack {
-
-                HStack {
-                    Spacer()
-                    Menu {
-
-                        Menu("Live Bait") {
-
-                            Button("Worms") {
-                                name = "Bait: Worms"
-                            }
-                            Button("Minnows") {
-                                name = "Bait: Minnows"
-                            }
-                            Button("Leeches") {
-                                name = "Bait: Leeches"
-                            }
-                            Button("Shrimp") {
-                                name = "Bait: Shrimp"
-                            }
-                            Button("Crawfish") {
-                                name = "Bait: Crawfish"
-                            }
-
-                        }
-
-                        Menu("Natural") {
-
-                            Button("Chicken") {
-                                name = "Bait: Chicken"
-                            }
-                            Button("Corn") {
-                                name = "Bait: Corn"
-                            }
-                            Button("Cut Fish") {
-                                name = "Bait: Cut Fish"
-                            }
-                            Button("Food") {
-                                name = "Bait: Food"
-                            }
-
-                        }
-
-                        Menu("Artificial") {
-
-                            Button("Plastic Worms") {
-                                name = "Bait: Plastic Worms"
-                            }
-                            Button("Jigs") {
-                                name = "Bait: Jigs"
-                            }
-                            Button("Spinner") {
-                                name = "Bait: Spinner"
-                            }
-                            Button("Crankbait") {
-                                name = "Bait: Crankbait"
-                            }
-                            Button("Spoon") {
-                                name = "Bait: Spoon"
-                            }
-                            Button("Topwater") {
-                                name = "Bait: Topwater"
-                            }
-                            Button("Swimbait") {
-                                name = "Bait: Swimbait"
-                            }
-                            Button("Flies") {
-                                name = "Bait: Flies"
-                            }
-
-                        }
-
-                        Button("Other") {
-
-                        }
-                    } label: {
-                        Text(name)
-                            .foregroundStyle(.black)
-                    }
-                    .menuOrder(.fixed)
-                }
-                Spacer()
-            }
-            .padding(.horizontal)
-            .padding(.vertical)
-            .frame(width: 375, height: 200)
-
-            HStack {
-                Spacer()
-                Menu {
-                    Button("Sunny") {
-                        weather = 1
-                        w = "Sunny"
-                    }
-                    Button("Rain") {
-                        weather = 2
-                        w = "Rain"
-                    }
-                    Button("Cloudy") {
-                        weather = 3
-                        w = "Cloudy"
-                    }
-                } label: {
-                    HStack {
-                        Text(w)
-                            .foregroundStyle(.black)
-                        Image(systemName: "chevron.down")
-                            .foregroundStyle(.black)
-                    }
                 }
                 .padding(.horizontal)
             }
+            .padding(.vertical)
+            
+            
+                ZStack{
+                    VStack{
+                        Spacer()
+                        HStack{
+                            Spacer()
+                            Text("Location: \(locVM.locString)")
+                        }
+                    }
+                    .padding()
+                   // .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomTrailing)
+                }
+        }
             .frame(width: 375, height: 200)
+            
+            
+            
+            
+            
+            
+            
+            
+         
+            
+           
+
 
             //            DatePicker(
             //                "Date", selection: $date, displayedComponents: [.date]
             //            )
             //            .datePickerStyle(.compact)
 
-            Button{
-                showCal = true
-            } label: {
-                HStack {
-                    Text(date.formatted(.dateTime.month(.abbreviated).day()))
-                        .foregroundColor(.black)
-                        .frame(width: 55, height: 10)
-                    Image(systemName: "chevron.down")
-                        .foregroundStyle(.black)
-                }
-                .padding()
-                .background(.gray.opacity(0.2))
-                .cornerRadius(8)
-            }
+            
 
             Spacer()
             
             
-            VStack{
-                Spacer()
-                HStack{
-                    Spacer()
-                    Text("Location: \(locVM.locString)")
-                }
-            }
-            .padding()
-            .frame(width: 375, height: 200)
+            
             
             VStack{
                 Spacer()
