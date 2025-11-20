@@ -244,8 +244,12 @@ struct AddView: View {
                         Sweight = ""
                         type = "lbs"
                         w = "Weather"
+                        
+                        
 
                     }
+                    
+                    dismissKeyboard = false
 
                 } label: {
                     Text("Add")

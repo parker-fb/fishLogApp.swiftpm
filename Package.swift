@@ -8,19 +8,19 @@ import PackageDescription
 import AppleProductTypes
 
 let package = Package(
-    name: "fishLogApp",
+    name: "iFish",
     platforms: [
         .iOS("17.0")
     ],
     products: [
         .iOSApplication(
-            name: "fishLogApp",
+            name: "iFish",
             targets: ["AppModule"],
             bundleIdentifier: "clc.fishLogApp",
             teamIdentifier: "DRB83F6Y9G",
             displayVersion: "1.0",
             bundleVersion: "1",
-            appIcon: .placeholder(icon: .paper),
+            appIcon: .asset("AppIcon"),
             accentColor: .presetColor(.brown),
             supportedDeviceFamilies: [
                 .pad,

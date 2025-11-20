@@ -18,6 +18,7 @@ struct FishCardView: View {
                 .padding(.bottom, 5)
 
             VStack(alignment: .leading, spacing: 20) {
+                Text("Fish\(fish.fishName)")
                 Text("\(fish.bait)")
                 Text("Length: \(fish.length, specifier: "%.1f") in")
                 Text(
