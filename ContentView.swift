@@ -17,12 +17,24 @@ struct ContentView: View {
                             Image(systemName: "books.vertical")
                                 
                         }
+            
+            
                     
                     AddView()
                         .tabItem{
                             Image(systemName: "plus.app")
                                
                         }
+            
+//            UserFishView()
+//                .tabItem {
+//                    Image(systemName: "person.crop.circle")
+//                }
+            
+            StatView()
+                .tabItem{
+                    Image(systemName: "chart.bar.fill")
+                }
                     
                     
                     

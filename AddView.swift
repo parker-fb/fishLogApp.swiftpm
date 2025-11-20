@@ -5,11 +5,14 @@
 //  Created by Jennifer Letak on 11/6/25.
 //
 
-import SwiftUI
 import CoreLocation
+import SwiftData
+import SwiftUI
 
 struct AddView: View {
-    
+
+    @Environment(\.modelContext) var context
+
     @StateObject var locVM = LocationViewModel()
 
     @State var weather = 0
@@ -23,312 +26,247 @@ struct AddView: View {
     @State var Sweight = ""
     @State var weight = 0.0
     @State var type = "lbs"
-//    @State var oz = ""
-//    @State var lbs = ""
+    //    @State var oz = ""
+    //    @State var lbs = ""
     @State var fishName = ""
-    
+
     @FocusState var dismissKeyboard: Bool
 
-    
     var body: some View {
-        ZStack {
-            RoundedRectangle(cornerRadius: 5)
-                .frame(width: 375, height: 200)
-                .foregroundStyle(.tertiary)
-            
-            
-            
-            HStack{
-                VStack{
-                    
-                    HStack{
+        VStack {
+            ZStack {
+                RoundedRectangle(cornerRadius: 5)
+                    .frame(width: 375, height: 200)
+                    .foregroundStyle(.tertiary)
+
+           
+                VStack {
+                    HStack {
                         Button {
                             showView = true
                         } label: {
                             Text("Fish\(fishName)")
                                 .foregroundStyle(.black)
                         }
-                        
                         Spacer()
                     }
                     Spacer()
                 }
-                .padding(.horizontal)
-                .padding(.vertical)
-                //.frame(width: 375, height: 200)
-                
-                
-                
-                VStack{
+                .padding()
+            
+
+              
+                VStack {
                     HStack {
                         Spacer()
                         Menu {
-                            
                             Menu("Live Bait") {
-                                
-                                Button("Worms") {
-                                    name = "Bait: Worms"
-                                }
-                                Button("Minnows") {
-                                    name = "Bait: Minnows"
-                                }
-                                Button("Leeches") {
-                                    name = "Bait: Leeches"
-                                }
-                                Button("Shrimp") {
-                                    name = "Bait: Shrimp"
-                                }
-                                Button("Crawfish") {
-                                    name = "Bait: Crawfish"
-                                }
-                                
+                                Button("Worms") { name = "Bait: Worms" }
+                                Button("Minnows") { name = "Bait: Minnows" }
+                                Button("Leeches") { name = "Bait: Leeches" }
+                                Button("Shrimp") { name = "Bait: Shrimp" }
+                                Button("Crawfish") { name = "Bait: Crawfish" }
                             }
-                            
                             Menu("Natural") {
-                                
-                                Button("Chicken") {
-                                    name = "Bait: Chicken"
-                                }
-                                Button("Corn") {
-                                    name = "Bait: Corn"
-                                }
-                                Button("Cut Fish") {
-                                    name = "Bait: Cut Fish"
-                                }
-                                Button("Food") {
-                                    name = "Bait: Food"
-                                }
-                                
+                                Button("Chicken") { name = "Bait: Chicken" }
+                                Button("Corn") { name = "Bait: Corn" }
+                                Button("Cut Fish") { name = "Bait: Cut Fish" }
+                                Button("Food") { name = "Bait: Food" }
                             }
-                            
                             Menu("Artificial") {
-                                
                                 Button("Plastic Worms") {
                                     name = "Bait: Plastic Worms"
                                 }
-                                Button("Jigs") {
-                                    name = "Bait: Jigs"
-                                }
-                                Button("Spinner") {
-                                    name = "Bait: Spinner"
-                                }
-                                Button("Crankbait") {
-                                    name = "Bait: Crankbait"
-                                }
-                                Button("Spoon") {
-                                    name = "Bait: Spoon"
-                                }
-                                Button("Topwater") {
-                                    name = "Bait: Topwater"
-                                }
-                                Button("Swimbait") {
-                                    name = "Bait: Swimbait"
-                                }
-                                Button("Flies") {
-                                    name = "Bait: Flies"
-                                }
-                                
+                                Button("Jigs") { name = "Bait: Jigs" }
+                                Button("Spinner") { name = "Bait: Spinner" }
+                                Button("Crankbait") { name = "Bait: Crankbait" }
+                                Button("Spoon") { name = "Bait: Spoon" }
+                                Button("Topwater") { name = "Bait: Topwater" }
+                                Button("Swimbait") { name = "Bait: Swimbait" }
+                                Button("Flies") { name = "Bait: Flies" }
                             }
-                            
-                            Button("Other") {
-                                
-                            }
+                            Button("Other") {}
                         } label: {
                             Text(name)
                                 .foregroundStyle(.black)
                         }
                         .menuOrder(.fixed)
                     }
-                    .padding(.horizontal)
-                    .padding(.vertical)
-                    
                     Spacer()
                 }
-                
-            }
-            .frame(width: 375, height: 200)
+                .padding()
+
             
-            .popover(isPresented: $showView) {
-                FishCollectionView(showView: $showView, fishName: $fishName)
-            }
-            
-            HStack{
-                
-                HStack{
-                    Text("Length: ")
-                    TextField("0.0 ", text: $Slength)
-                        .keyboardType(.decimalPad)
-                       // .padding(-5)
-                        .focused($dismissKeyboard)
-                    Text("in")
-                        .opacity(0.6)
+                VStack {
                     Spacer()
-                    
-                }
-                .padding(.horizontal)
-                //            .onTapGesture {
-                //                dismissKeyboard.toggle()
-                //            }
-                
-                HStack{
-                    
-                    //Spacer()
-                }
-                //.frame(width: 157)
-                
-                
-                //            .onTapGesture {
-                //                dismissKeyboard.toggle()
-                //            }
-                
-                
-                Button{
-                    showCal = true
-                } label: {
                     HStack {
-                        Text(date.formatted(.dateTime.month(.abbreviated).day()))
-                            .foregroundColor(.black)
-                            .frame(width: 55, height: 10)
-                        Image(systemName: "chevron.down")
-                            .foregroundStyle(.black)
-                    }
-                    .padding()
-                    .background(.gray.opacity(0.2))
-                    .cornerRadius(8)
-                }
-                
-                
-                
-                HStack {
-                    //Spacer()
-                    Menu {
-                        Button("Sunny") {
-                            weather = 1
-                            w = "Sunny"
+                        HStack(spacing: 2) {
+                            Text("Length:")
+                            TextField("0.0", text: $Slength)
+                                .keyboardType(.decimalPad)
+                                .focused($dismissKeyboard)
+                                .frame(width: 30)
+                            Text("in").opacity(0.6)
                         }
-                        Button("Rain") {
-                            weather = 2
-                            w = "Rain"
-                        }
-                        Button("Cloudy") {
-                            weather = 3
-                            w = "Cloudy"
-                        }
-                    } label: {
-                        HStack {
-                            Text(w)
-                                .foregroundStyle(.black)
-                            Image(systemName: "chevron.down")
-                                .foregroundStyle(.black)
-                        }
-                    }
-                    .padding(.horizontal)
-                }
-                
-                
-            }
-            .frame(width: 375, height: 200)
-            
-            
-            HStack{
-                
-            VStack{
-                Spacer()
-                HStack{
-                    Text("Weight: ")
-                    TextField("0.00", text: $Sweight)
-                        .keyboardType(.decimalPad)
-                        //.padding(-5)
-                        .focused($dismissKeyboard)
-                    //Spacer()
-                    Menu{
-                        
-                        Button("lbs"){
-                            type = "lbs"
-                        }
-                        Button("oz"){
-                            type = "oz"
-                        }
-                        
-                    } label: {
-                        
-                        HStack{
-                            Text("\(type)")
-                                .foregroundStyle(.black)
-                                .opacity(0.6)
-                            Image(systemName: "chevron.down")
-                                .font(Font.system(size: 11))
-                                .opacity(0.6)
-                                .padding(-5)
-                                .foregroundStyle(.black)
-                        }
-                    }
-                }
-                .padding(.horizontal)
-            }
-            .padding(.vertical)
-            
-            
-                ZStack{
-                    VStack{
                         Spacer()
-                        HStack{
-                            Spacer()
-                            Text("Location: \(locVM.locString)")
+                    }
+                    Spacer()
+                }
+                .padding(.leading, 10)
+
+             
+                VStack {
+                    Spacer()
+                    HStack {
+                        Spacer()
+                        Button {
+                            showCal = true
+                        } label: {
+                            HStack(spacing: 2) {
+                                Text(
+                                    date.formatted(
+                                        .dateTime.month(.abbreviated).day()
+                                    )
+                                )
+                                .foregroundColor(.black)
+                                Image(systemName: "chevron.down")
+                                    .foregroundStyle(.black)
+                            }
+                            .padding(8)
+                            .background(.gray.opacity(0.2))
+                            .cornerRadius(8)
+                        }
+                        Spacer()
+                    }
+                    Spacer()
+                }
+
+            
+                VStack {
+                    Spacer()
+                    HStack {
+                        Spacer()
+                        Menu {
+                            Button("Sunny") {
+                                weather = 1
+                                w = "Sunny"
+                            }
+                            Button("Rain") {
+                                weather = 2
+                                w = "Rain"
+                            }
+                            Button("Cloudy") {
+                                weather = 3
+                                w = "Cloudy"
+                            }
+                        } label: {
+                            HStack(spacing: 2) {
+                                Text(w)
+                                    .foregroundStyle(.black)
+                                Image(systemName: "chevron.down")
+                                    .foregroundStyle(.black)
+                            }
                         }
                     }
-                    .padding()
-                   // .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomTrailing)
+                    .padding(.trailing, 10)
+                    Spacer()
                 }
-        }
-            .frame(width: 375, height: 200)
-            
-            
-            
-            
-            
-            
-            
-            
-         
-            
-           
 
-
-            //            DatePicker(
-            //                "Date", selection: $date, displayedComponents: [.date]
-            //            )
-            //            .datePickerStyle(.compact)
-
-            
-
-            Spacer()
-            
-            
-            
-            
-            VStack{
-                Spacer()
-                Button {
-                    
-                    if let l = Double(Slength){
-                        len = l
+               
+                VStack {
+                    Spacer()
+                    HStack {
+                        HStack(spacing: 2) {
+                            Text("Weight:")
+                            TextField("0.00", text: $Sweight)
+                                .keyboardType(.decimalPad)
+                                .focused($dismissKeyboard)
+                                .frame(width: 40)
+                            Menu {
+                                Button("lbs") {
+                                    type = "lbs"
+                                }
+                                Button("oz") {
+                                    type = "oz"
+                                }
+                            } label: {
+                                HStack(spacing: 2) {
+                                    Text("\(type)")
+                                        .foregroundStyle(.black)
+                                        .opacity(0.6)
+                                    Image(systemName: "chevron.down")
+                                        .font(.system(size: 11))
+                                        .opacity(0.6)
+                                }
+                            }
+                        }
+                        Spacer()
                     }
-                    
+                    .padding(.leading, 10)
+                }
+                .padding(.bottom)
+
+               
+                VStack {
+                    Spacer()
+                    HStack {
+                        Spacer()
+                        Text("Location: \(locVM.locString)")
+
+                    }
+                    .padding(.trailing, 10)
+                }
+                .padding(.bottom)
+            }
+            .frame(width: 375, height: 200)
+
+            VStack {
+                Button {
+                    if let length = Double(Slength),
+                        let weight = Double(Sweight)
+                    {
+                        let newFish = FishInfo(
+                            fishName: fishName,
+                            bait: name,
+                            length: length,
+                            weight: weight,
+                            weightType: type,
+                            date: date,
+                            weather: w,
+                            location: locVM.locString
+                        )
+                        context.insert(newFish)
+                        try? context.save()
+
+                        fishName = ""
+                        name = "Bait"
+                        Slength = ""
+                        Sweight = ""
+                        type = "lbs"
+                        w = "Weather"
+
+                    }
+
                 } label: {
                     Text("Add")
-                }
-            }
-            .frame(width: 275, height: 280)
 
-            
+                }
+                .padding(.horizontal, 50)
+                .padding(.top, 10)
+            }
+
         }
         .padding()
+
+        .popover(isPresented: $showView) {
+            FishCollectionView(showView: $showView, fishName: $fishName)
+        }
+
+      
+
         .onTapGesture {
             dismissKeyboard = false
         }
-        
-        
         .sheet(isPresented: $showCal) {
             VStack {
                 DatePicker(
@@ -342,20 +280,10 @@ struct AddView: View {
                     showCal = false
                 }
             }
-
+            .padding()
         }
-        
-        
-        
-        
-        
-        
-        
-
-        
     }
 }
-
 
 #Preview {
     AddView()
