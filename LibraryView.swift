@@ -103,7 +103,7 @@ struct LibraryView: View {
                             HStack {
                                 HStack(spacing: 2) {
                                     Text("Weight:")
-                                    Text("\(fish.weight, specifier: "%.2f")")
+                                    Text("\(fish.weight, specifier: "%.1f")")
                                         .frame(width: 40)
                                     Text(fish.weightType).opacity(0.6)
                                 }

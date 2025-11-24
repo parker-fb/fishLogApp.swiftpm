@@ -16,8 +16,8 @@ let package = Package(
         .iOSApplication(
             name: "iFish",
             targets: ["AppModule"],
-            bundleIdentifier: "clc.fishLogApp",
-            teamIdentifier: "DRB83F6Y9G",
+            bundleIdentifier: "clc.fishLog",
+            teamIdentifier: "LKW7UKGZ29",
             displayVersion: "1.0",
             bundleVersion: "1",
             appIcon: .asset("AppIcon"),
