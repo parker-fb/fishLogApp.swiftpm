@@ -40,7 +40,8 @@ struct ContentView: View {
                     
                     
                 }
-                .accentColor(.black)
+       // .background(.white)
+                .tint(.black)
 
         
         
