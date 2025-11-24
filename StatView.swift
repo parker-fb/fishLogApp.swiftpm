@@ -19,9 +19,11 @@ struct StatView: View {
         VStack {
             Text("Your Stats")
                 .font(Font.largeTitle.bold())
+                .foregroundStyle(Color(red: 240/255, green: 233/255, blue: 214/255))
                 .padding()
             Divider()
                 .fontWeight(.bold)
+                .background(Color(red: 240/255, green: 233/255, blue: 214/255))
             Spacer()
             VStack(alignment: .leading, spacing: 20) {
                 Text("Most Common Fish\(commonFish())")
@@ -31,11 +33,13 @@ struct StatView: View {
             }
             .padding()
             .frame(width: 200)
-            .background(Color.gray.opacity(0.1))
+            .background(Color(red: 240/255, green: 233/255, blue: 214/255))
             .cornerRadius(10)
             .shadow(radius: 2)
             Spacer()
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(Color(red: 30/255, green: 58/255, blue: 95/255))
 
     }
 

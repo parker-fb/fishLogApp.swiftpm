@@ -50,6 +50,7 @@ struct FishCollectionView: View {
         HStack {
             if !selectedName.isEmpty {
                 Text("Select \(selectedName)?")
+                    .foregroundStyle(.white)
                     .padding()
                 
                 Button {
@@ -63,12 +64,21 @@ struct FishCollectionView: View {
                     showView = false
                 } label: {
                     Text("Yes")
+                        .foregroundStyle(.black)
+                        .bold()
+                        .padding(.horizontal, 10)
+                        .padding(.vertical, 1)
+                        .background(Color(red: 179/255, green: 229/255, blue: 252/255))
+                        .clipShape(Capsule())
+                        .cornerRadius(20)
                 }
             }
             
             //
             
         }
+        .frame(maxWidth: .infinity)
+        .background(Color(red: 30/255, green: 58/255, blue: 95/255))
         
         ScrollView{
         LazyVGrid(columns: columns) {
@@ -85,16 +95,18 @@ struct FishCollectionView: View {
                             .scaledToFit()
                             .cornerRadius(8)
                         Text(f.name)
+                            .foregroundStyle(.white)
                     }
                     .padding()
                     .frame(width: 200, height: 215)
-                    .background(Color.gray.opacity(0.1))
+                    .background(Color(red: 179/255, green: 229/255, blue: 252/255).opacity(0.4))
                     .cornerRadius(8)
                 }
                 
             }
         }
     }
+        .background(Color(red: 30/255, green: 58/255, blue: 95/255))
 
     }
 }

@@ -34,10 +34,15 @@ struct AddView: View {
 
     var body: some View {
         VStack {
+            Text("Add Fish")
+                .font(.system(size: 50))
+                .font(.title)
+                .fontDesign(.rounded)
+                .foregroundStyle(Color(red: 240/255, green: 233/255, blue: 214/255))
             ZStack {
                 RoundedRectangle(cornerRadius: 5)
                     .frame(width: 375, height: 200)
-                    .foregroundStyle(.tertiary)
+                    .foregroundStyle(Color(red: 113/255, green: 165/255, blue: 112/255))
 
            
                 VStack {
@@ -195,6 +200,7 @@ struct AddView: View {
                                         .foregroundStyle(.black)
                                         .opacity(0.6)
                                     Image(systemName: "chevron.down")
+                                        .foregroundStyle(.black)
                                         .font(.system(size: 11))
                                         .opacity(0.6)
                                 }
@@ -253,7 +259,14 @@ struct AddView: View {
 
                 } label: {
                     Text("Add")
-
+                        .foregroundStyle(.black)
+                        .bold()
+                        .padding(.horizontal, 10)
+                        .padding(.vertical, 1)
+                        .background(Color(red: 179/255, green: 229/255, blue: 252/255))
+                        .clipShape(Capsule())
+                        .cornerRadius(20)
+                        
                 }
                 .padding(.horizontal, 50)
                 .padding(.top, 10)
@@ -261,6 +274,8 @@ struct AddView: View {
 
         }
         .padding()
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(Color(red: 60/255, green: 100/255, blue: 150/255))
 
         .popover(isPresented: $showView) {
             FishCollectionView(showView: $showView, fishName: $fishName)

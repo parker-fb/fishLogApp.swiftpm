@@ -16,15 +16,17 @@ struct LibraryView: View {
 
         ScrollView {
             Text("Your Fish")
+                .foregroundStyle(Color(red: 240/255, green: 233/255, blue: 214/255))
                 .font(.largeTitle)
                 .fontWeight(.bold)
             Text("Sort by: Most Recent")
+                .foregroundStyle(Color(red: 240/255, green: 233/255, blue: 214/255))
                 .font(.caption)
             VStack(spacing: 20) {
                 ForEach(fishes, id: \.id) { fish in
                     ZStack {
                         RoundedRectangle(cornerRadius: 5)
-                            .foregroundStyle(.tertiary)
+                            .foregroundStyle(Color(red: 123/255, green: 175/255, blue: 122/255))
                             .frame(width: 375, height: 200)
 
                        
@@ -126,6 +128,8 @@ struct LibraryView: View {
             }
             .padding()
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(Color(red: 60/255, green: 100/255, blue: 150/255))
     }
 }
 

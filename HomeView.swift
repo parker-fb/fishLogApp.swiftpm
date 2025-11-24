@@ -17,6 +17,7 @@ struct HomeView: View {
         VStack{
         VStack{
             Text("iFish")
+                .foregroundStyle(.white)
                 .font(.largeTitle.bold())
                 .fontWidth(.expanded)
         }
@@ -31,6 +32,8 @@ struct HomeView: View {
             }
         }
     }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(Color(red: 30/255, green: 58/255, blue: 95/255))
     }
 
     func mostRecent() -> FishInfo? {
