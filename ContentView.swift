@@ -9,13 +9,15 @@ struct ContentView: View {
                     HomeView()
                         .tabItem{
                             Image(systemName: "house")
-                             
+                            
+                             Text("Home")
                         }
                     
                     LibraryView()
                         .tabItem{
                             Image(systemName: "books.vertical")
-                                
+                            
+                                Text("Libary")
                         }
             
             
@@ -24,6 +26,7 @@ struct ContentView: View {
                         .tabItem{
                             Image(systemName: "plus.app")
                                
+                            Text("Add")
                         }
             
 //            UserFishView()
@@ -34,6 +37,8 @@ struct ContentView: View {
             StatView()
                 .tabItem{
                     Image(systemName: "chart.bar.fill")
+                    
+                    Text("Analyze")
                 }
                     
                     
