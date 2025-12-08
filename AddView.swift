@@ -29,6 +29,7 @@ struct AddView: View {
     //    @State var oz = ""
     //    @State var lbs = ""
     @State var fishName = ""
+    @State var fill = false
 
     @FocusState var dismissKeyboard: Bool
 
@@ -231,6 +232,7 @@ struct AddView: View {
                     if let length = Double(Slength),
                         let weight = Double(Sweight)
                     {
+                        
                         let newFish = FishInfo(
                             fishName: fishName,
                             bait: name,
@@ -255,6 +257,10 @@ struct AddView: View {
 
                     }
                     
+                    else{
+                        fill = true
+                    }
+                    
                     dismissKeyboard = false
 
                 } label: {
@@ -270,12 +276,16 @@ struct AddView: View {
                 }
                 .padding(.horizontal, 50)
                 .padding(.top, 10)
+                .alert("Please Fill All Information", isPresented: $fill, actions: {
+                    
+                })
             }
 
         }
         .padding()
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color(red: 60/255, green: 100/255, blue: 150/255))
+        
 
         .popover(isPresented: $showView) {
             FishCollectionView(showView: $showView, fishName: $fishName)
